@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 	"syscall"
+	"strconv"
 	"unsafe"
 
 	"github.com/gliderlabs/ssh"
 )
 
 func checkPassword(ctx ssh.Context, pass string) bool {
-	if pass == "" {
+	if len(pass) == 0 {
 		return false
 	}
 	return redisConn.Get(fmt.Sprintf("%s:%s:pass", redisDocksshPrefix, ctx.User())).Val() == pass
