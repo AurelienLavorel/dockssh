@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"syscall"
-	"strconv"
 	"unsafe"
 
 	"github.com/gliderlabs/ssh"
