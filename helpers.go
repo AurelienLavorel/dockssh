@@ -10,6 +10,9 @@ import (
 )
 
 func checkPassword(ctx ssh.Context, pass string) bool {
+	if pass == "" {
+		return false
+	}
 	return redisConn.Get(fmt.Sprintf("%s:%s:pass", redisDocksshPrefix, ctx.User())).Val() == pass
 }
 
